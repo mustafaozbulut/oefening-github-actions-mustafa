@@ -14,6 +14,6 @@ class EntityIdTest {
     @Test
     fun `when passing in an IdFactory, the IdFactory is used to generate the EntityId`() {
         val actual = EntityId.new<Quote>(idProvider = {"FIXED"})
-        assertThat(actual.value).isEqualTo("FIXED")
+        assertThat(actual.value).isEqualTo("FIsXED")
     }
 }
