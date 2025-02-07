@@ -8,10 +8,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: '0'
 
       - name: Create tag
         run: |
-          VERSION=$(./build_version.sh)
+          VERSION=$(./your-version-script.sh)
+          echo "Generated version number: ${VERSION}"  # Simple echo
+          echo "::notice::Creating tag with version: v${VERSION}"  # GitHub Actions notice
           git tag v${VERSION}
           git push origin v${VERSION}
 
@@ -26,11 +30,6 @@ jobs:
 
       - name: Build with Gradle Wrapper
         run: ./gradlew build
-
-      - name: Create tag
-        run: |
-          git tag v1.0.0
-          git push origin v1.0.0
 
 #      - name: Start the Slack workflow
 #        uses: slackapi/slack-github-action@v2.0.0
