@@ -16,15 +16,20 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582
 
       - name: Build with Gradle Wrapper
         run: ./gradlew build
 
-      - name: Start the Slack workflow
-        uses: slackapi/slack-github-action@v2.0.0
-        with:
-          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
-          webhook-type: webhook-trigger
+      - uses: actions/checkout@v4
+      - name: Create tag
+        run: |
+          git tag v1.0.0
+          git push origin v1.0.0
+
+#      - name: Start the Slack workflow
+#        uses: slackapi/slack-github-action@v2.0.0
+#        with:
+#          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+#          webhook-type: webhook-trigger
