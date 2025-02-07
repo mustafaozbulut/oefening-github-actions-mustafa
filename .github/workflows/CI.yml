@@ -31,22 +31,22 @@ jobs:
 
       - name: Build with Gradle Wrapper
         run: ./gradlew build
-
-      - name: Start the Slack workflow
-        uses: slackapi/slack-github-action@v2.0.0
-        with:
-          payload: |
-            {
-              "text": "New version v${{ env.VERSION }} has been deployed! 🚀",
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*New Release Deployed! 🎉*\nVersion: v${{ env.VERSION }}\nRepository: ${{ github.repository }}"
-                  }
-                }
-              ]
-            }
-          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
-          webhook-type: webhook-trigger
+#
+#      - name: Start the Slack workflow
+#        uses: slackapi/slack-github-action@v2.0.0
+#        with:
+#          payload: |
+#            {
+#              "text": "New version v${{ env.VERSION }} has been deployed! 🚀",
+#              "blocks": [
+#                {
+#                  "type": "section",
+#                  "text": {
+#                    "type": "mrkdwn",
+#                    "text": "*New Release Deployed! 🎉*\nVersion: v${{ env.VERSION }}\nRepository: ${{ github.repository }}"
+#                  }
+#                }
+#              ]
+#            }
+#          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+#          webhook-type: webhook-trigger
