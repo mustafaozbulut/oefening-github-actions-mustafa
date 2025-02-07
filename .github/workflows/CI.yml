@@ -13,7 +13,7 @@ jobs:
 
       - name: Create tag
         run: |
-          VERSION=$(./your-version-script.sh)
+          VERSION=$(./build_version.sh)
           echo "Generated version number: ${VERSION}"  # Simple echo
           echo "::notice::Creating tag with version: v${VERSION}"  # GitHub Actions notice
           git tag v${VERSION}
